@@ -1,0 +1,92 @@
+{
+  "1": {
+    "class_type": "LongCat_Video_SM_Model",
+    "inputs": {
+      "diffusion_models": "LongCat-Video-Avatar-1.5-int8.safetensors",
+      "gguf": "none",
+      "vae": "LongCat-Video-Avatar-vae.safetensors",
+      "lora": "longcat-avatar-dmd_lora.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "LongCat_Video_SM_Sampler",
+    "inputs": {
+      "model": ["1", 0],
+      "te_cond": ["5", 0],
+      "au_cond": ["22", 0],
+      "image": ["7", 0],
+      "stage_1": "ai2v",
+      "resolution": "480p",
+      "seed": 1554519107,
+      "steps": 8,
+      "text_guidance_scale": 1.0,
+      "audio_guidance_scale": 1.0,
+      "ref_img_index": 10,
+      "mask_frame_range": 3,
+      "block_num": 0
+    }
+  },
+  "3": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": ["2", 0],
+      "audio": ["23", 0],
+      "fps": 25.0
+    }
+  },
+  "4": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": ["3", 0],
+      "filename_prefix": "video/${JOB_ID}",
+      "format": "auto",
+      "codec": "auto"
+    }
+  },
+  "5": {
+    "class_type": "LongCat_Video_SM_Encode",
+    "inputs": {
+      "clip": ["8", 0],
+      "prompt": "A young woman with curly brown hair, wearing a black floral dress, sits indoors in a warm home studio room and speaks naturally to the camera. She keeps a stable identity, realistic face, natural mouth movement, visible upper body, and calm expressive hand gestures near her chest while sounding thoughtful and slightly playful.",
+      "negative_prompt": "Close-up, overexposed, static, blurred details, subtitles, paintings, still image, worst quality, low quality, JPEG artifacts, deformed face, deformed hands, extra fingers, fused fingers, duplicate person, walking backwards."
+    }
+  },
+  "7": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "reference.png"
+    }
+  },
+  "8": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+      "type": "wan",
+      "device": "default"
+    }
+  },
+  "22": {
+    "class_type": "LongCat_Video_SM_Audio",
+    "inputs": {
+      "audio_encoder": ["27", 0],
+      "audio": ["23", 0],
+      "save_fps": 25,
+      "num_segments": 1,
+      "audio_type": "para",
+      "p_box": ""
+    }
+  },
+  "23": {
+    "class_type": "LoadAudio",
+    "inputs": {
+      "audio": "audio.wav"
+    }
+  },
+  "27": {
+    "class_type": "LongCat_Video_SM_WhisperModel",
+    "inputs": {
+      "audio_encoder": "whisper-large-v3.safetensors"
+    }
+  }
+}
+
