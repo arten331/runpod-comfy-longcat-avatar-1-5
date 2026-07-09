@@ -1,0 +1,35 @@
+{
+  "models": [
+    {
+      "name": "LongCat-Video-Avatar-1.5-int8.safetensors",
+      "destination": "diffusion_models/LongCat-Video-Avatar-1.5-int8.safetensors",
+      "size": 15880386456,
+      "url": "https://huggingface.co/smthem/LongCat-Video-Avatar-1.5-merge/resolve/main/LongCat-Video-Avatar-1.5-int8.safetensors"
+    },
+    {
+      "name": "longcat-avatar-dmd_lora.safetensors",
+      "destination": "loras/longcat-avatar-dmd_lora.safetensors",
+      "size": 2523077984,
+      "url": "https://huggingface.co/meituan-longcat/LongCat-Video-Avatar-1.5/resolve/main/lora/dmd_lora.safetensors"
+    },
+    {
+      "name": "LongCat-Video-Avatar-vae.safetensors",
+      "destination": "vae/LongCat-Video-Avatar-vae.safetensors",
+      "size": 507591892,
+      "url": "https://huggingface.co/meituan-longcat/LongCat-Video/resolve/main/vae/diffusion_pytorch_model.safetensors"
+    },
+    {
+      "name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+      "destination": "clip/umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+      "size": 6735906897,
+      "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors"
+    },
+    {
+      "name": "whisper-large-v3.safetensors",
+      "destination": "audio_encoders/whisper-large-v3.safetensors",
+      "size": 3087130976,
+      "url": "https://huggingface.co/meituan-longcat/LongCat-Video-Avatar-1.5/resolve/main/whisper-large-v3/model.safetensors"
+    }
+  ]
+}
+
