@@ -4,7 +4,7 @@ FROM ${WORKER_IMAGE} AS flash_builder
 
 ARG FLASH_ATTN_VERSION=2.7.4.post1
 ENV CUDA_HOME=/usr/local/cuda-12.6 \
-    MAX_JOBS=4
+    MAX_JOBS=2
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -54,4 +54,3 @@ COPY workflow_api.json /workflow_api.json
 RUN chmod +x /start.sh
 
 CMD ["/start.sh"]
-
