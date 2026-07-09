@@ -15,8 +15,9 @@ RUN apt-get update \
 
 RUN uv pip install packaging psutil ninja \
     && mkdir -p /wheels \
-    && uv pip wheel "flash-attn==${FLASH_ATTN_VERSION}" \
+    && python -m pip wheel "flash-attn==${FLASH_ATTN_VERSION}" \
         --no-build-isolation \
+        --no-deps \
         --wheel-dir /wheels
 
 FROM ${WORKER_IMAGE}
