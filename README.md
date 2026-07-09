@@ -8,6 +8,10 @@ The image contains code only. The five model files are downloaded by a one-time
 `init_models` job to an attached RunPod network volume. Their total size is
 approximately 28.7 GB.
 
+The `.github/workflows/build.yml` workflow builds the image in GitHub Actions
+and pushes `runpod-comfy-longcat-avatar-1-5:latest` to Docker Hub. Docker Hub
+credentials are provided only through GitHub Actions secrets.
+
 ## Endpoint configuration
 
 - Endpoint type: Queue
@@ -56,4 +60,3 @@ audio as base64 files named `reference.png` and `audio.wav`:
 
 Outputs up to 7 MB are returned as base64. Larger outputs are copied to
 `/runpod-volume/outputs/<job-id>/` and returned as volume paths.
-
