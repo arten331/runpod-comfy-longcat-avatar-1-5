@@ -1,0 +1,9 @@
+*
+!Dockerfile
+!handler.py
+!model_manifest.json
+!requirements-node.txt
+!start.sh
+!workflow_api.json
+!README.md
+
