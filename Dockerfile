@@ -2,15 +2,15 @@ ARG WORKER_IMAGE=runpod/worker-comfyui:5.8.6-base
 
 FROM ${WORKER_IMAGE} AS flash_builder
 
-ARG FLASH_ATTN_VERSION=2.7.4.post1
-ENV CUDA_HOME=/usr/local/cuda-12.6 \
+ARG FLASH_ATTN_VERSION=2.8.3.post1
+ENV CUDA_HOME=/usr/local/cuda-13.0 \
     MAX_JOBS=2
 
 RUN if [ ! -L /sbin ]; then ln -sf /usr/sbin/ldconfig.real /sbin/ldconfig.real; fi \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
         build-essential \
-        cuda-nvcc-12-6 \
+        cuda-nvcc-13-0 \
         ninja-build \
     && rm -rf /var/lib/apt/lists/*
 
