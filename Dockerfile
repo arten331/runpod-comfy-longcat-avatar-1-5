@@ -21,7 +21,7 @@ RUN if [ ! -L /sbin ]; then ln -sf /usr/sbin/ldconfig.real /sbin/ldconfig.real; 
 
 RUN uv pip install packaging psutil ninja \
     && mkdir -p /wheels \
-    && FLASH_ATTN_CUDA_ARCHS=80 python -m pip wheel "flash-attn==${FLASH_ATTN_VERSION}" \
+    && MAX_JOBS=4 FLASH_ATTN_CUDA_ARCHS=80 python -m pip wheel "flash-attn==${FLASH_ATTN_VERSION}" \
         --no-build-isolation \
         --no-deps \
         --wheel-dir /wheels
