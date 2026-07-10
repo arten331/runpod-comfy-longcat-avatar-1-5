@@ -6,7 +6,8 @@ ARG FLASH_ATTN_VERSION=2.7.4.post1
 ENV CUDA_HOME=/usr/local/cuda-12.6 \
     MAX_JOBS=2
 
-RUN apt-get update \
+RUN if [ ! -L /sbin ]; then ln -sf /usr/sbin/ldconfig.real /sbin/ldconfig.real; fi \
+    && apt-get update \
     && apt-get install -y --no-install-recommends \
         build-essential \
         cuda-nvcc-12-6 \
@@ -24,7 +25,8 @@ FROM ${WORKER_IMAGE}
 
 ARG LONGCAT_NODE_SHA=b8f95ff1b4d6c8f9aa49136419bc51a09b88c4fe
 
-RUN apt-get update \
+RUN if [ ! -L /sbin ]; then ln -sf /usr/sbin/ldconfig.real /sbin/ldconfig.real; fi \
+    && apt-get update \
     && apt-get install -y --no-install-recommends libsndfile1 \
     && rm -rf /var/lib/apt/lists/*
 
