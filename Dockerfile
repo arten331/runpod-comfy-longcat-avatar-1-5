@@ -14,6 +14,11 @@ RUN if [ ! -L /sbin ]; then ln -sf /usr/sbin/ldconfig.real /sbin/ldconfig.real; 
         ninja-build \
     && rm -rf /var/lib/apt/lists/*
 
+RUN if [ ! -L /sbin ]; then ln -sf /usr/sbin/ldconfig.real /sbin/ldconfig.real; fi \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends python3.12-dev \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN uv pip install packaging psutil ninja \
     && mkdir -p /wheels \
     && python -m pip wheel "flash-attn==${FLASH_ATTN_VERSION}" \
